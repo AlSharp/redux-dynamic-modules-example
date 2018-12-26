@@ -1,27 +1,13 @@
-export default (state={
-  id: undefined,
+export default id => (state={
   colorHex: '#FF0000'
 }, action) => {
 
   switch(action.type) {
-    case 'COLORIZED_CARD_STATE_INIT': {
-      if (!state.id) {
-        return {
-          ...state,
-          id: action.payload
-        }
+    case `@@${id}/COLOR_CHANGE`: {
+      return {
+        ...state,
+        colorHex: action.payload
       }
-      return state;
-    }
-
-    case 'COLOR_CHANGE': {
-      if (action.meta.id === state.id) {
-        return {
-          ...state,
-          colorHex: action.payload
-        }
-      }
-      return state;
     }
 
     default:
