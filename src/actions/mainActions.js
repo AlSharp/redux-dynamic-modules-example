@@ -6,3 +6,12 @@ export const handleCardAdd = () => dispatch => {
     }
   )
 }
+
+export const handleCardRemove = id => dispatch => {
+  dispatch(
+    {
+      type: 'CARD_REMOVE',
+      payload: id
+    }
+  )
+}

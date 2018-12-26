@@ -1,0 +1,39 @@
+.card {
+  display: inline-block;
+  height: 280px;
+  width: 250px;
+  margin: 10px 10px;
+}
+
+.card > .colored {
+  height: calc(100% - 90px);
+  width: 100%;
+  border-width: 1px 1px 0 1px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-color: #CCC;
+  border-style: solid;
+}
+
+.card > .colors {
+  height: 90px;
+  width: 100%;
+  border-width: 0 1px 1px 1px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-color: #CCC;
+  border-style: solid;
+  text-align: center;
+}
+
+.card > .colors > .color-button {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  border-radius: 4px;
+  margin: 5px 3px;
+}
+
+.card > .colors > .color-button:hover {
+  cursor: pointer;
+}
