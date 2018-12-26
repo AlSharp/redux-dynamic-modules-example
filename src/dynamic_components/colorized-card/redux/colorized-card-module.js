@@ -1,5 +1,6 @@
 import colorizedCardReducer from './colorized-card-reducer';
 
+
 const getColorizedCardModule = id => {
   return {
     id: id,

@@ -1,5 +1,5 @@
 {
-  "name": "redux-dynamic-modules-example",
+  "name": "redux-dynamic-modules-namespacing-example",
   "version": "0.1.0",
   "private": true,
   "author": "Albert Sharapov",

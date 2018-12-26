@@ -1,17 +1,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { DynamicModuleLoader } from 'redux-dynamic-modules';
-// import Loadable from 'react-loadable';
+import Loadable from 'react-loadable';
 import './App.css';
-
-import ColorizedCard from './dynamic_components/colorized-card/component/colorized-card';
-import getColorizedCardModule from './dynamic_components/colorized-card/redux/colorized-card-module';
 
 import {
   handleCardAdd
 } from './actions/mainActions';
 
 class App extends Component {
+
+  _colorizedCard = null;
+
+  getColorizedCard() {
+    if (this._colorizedCard) {
+      return this._colorizedCard;
+    }
+
+    const LoadableColorizedCard = Loadable(
+      {
+        loader: () => import('./dynamic_components/colorized-card'),
+        loading: () => <div>Loading Script...</div>
+      }
+    )
+    this._colorizedCard = LoadableColorizedCard;
+    return this._colorizedCard;
+  }
+
   render() {
     const { handleCardAdd, cards } = this.props;
     return (
@@ -23,14 +37,12 @@ class App extends Component {
         </button>
         <div className="cards">
           {
-            cards.map((card) =>
-              <DynamicModuleLoader
-                key={card.id}
-                modules={[getColorizedCardModule(card.id)]}
-              >
-                <ColorizedCard id={card.id} />
-              </DynamicModuleLoader>
-            )
+            cards.map((card) => {
+              const Card = this.getColorizedCard();
+              return (
+                <Card key={card.id} id={card.id}/>
+              )
+            })
           }
         </div>
       </div>
